@@ -3,16 +3,29 @@ package hello.springcoreproject.order;
 import hello.springcoreproject.discount.DiscountPolicy;
 import hello.springcoreproject.member.Member;
 import hello.springcoreproject.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository ;
     private final DiscountPolicy discountPolicy;  // private final DiscountPolicy discountPolicy = new FixDiscaountPolicy();
 
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
+
+    //테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
+//
+//
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {     // null 을 허용합니다 라고 하지 않는 이상 생성자에는 값을 다 채워야한다.
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
 
     @Override
